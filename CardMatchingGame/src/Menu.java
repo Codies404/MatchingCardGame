@@ -23,8 +23,9 @@ public class Menu extends JFrame{
 
 
 	public Menu(String title,int width,int height) {
+		
 		super(title);
-		repaint();
+		
 		this.width = width;
 		this.height = height;
 		setSize(width,height);
@@ -98,11 +99,11 @@ public class Menu extends JFrame{
 		pane.add(row5);
 
 		setContentPane(pane);
-		
+		repaint();
 	}
 	public void setVisible() {
 		setVisible(true);
-		repaint();
+		
 	}
 	@Override
     public void paint(Graphics g) {
