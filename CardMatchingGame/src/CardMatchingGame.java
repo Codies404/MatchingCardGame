@@ -6,9 +6,7 @@ public class CardMatchingGame {
 
 
 new Menu("Shape Master",WIDTH,HEIGHT);
-		
 
-		
 
 
 
