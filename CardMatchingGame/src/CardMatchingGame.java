@@ -6,7 +6,7 @@ public class CardMatchingGame {
 
 		Game g1=new Game();
 
-		new Menu("Shape Master",WIDTH,HEIGHT);
+		//new Menu("Shape Master",WIDTH,HEIGHT);
 
 
 	}
