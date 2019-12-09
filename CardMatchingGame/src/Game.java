@@ -2,6 +2,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,8 +13,10 @@ import javax.swing.JTextField;
 
 public class Game extends JFrame {
 
-	public Game() {
+	public Game(Menu mn) {
 
+		Handler handler;
+		handler = new Handler();
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -31,7 +35,14 @@ public class Game extends JFrame {
 		JButton Hard = new JButton("Hard");
 		JButton Back = new JButton("Back");
 
+		Back.addActionListener(e -> {
+			jf.dispose();
+			mn.setVisible();
+		});
+
 		JTextField name = new JTextField(50);
+		pack();
+		name.addActionListener(handler);
 
 		JLabel username = new JLabel("Enter Your name.", JLabel.NORTH_EAST);
 		JLabel difficulty = new JLabel("Please choose difficulty.");
