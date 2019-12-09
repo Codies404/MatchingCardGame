@@ -34,7 +34,10 @@ public class Menu extends JFrame{
 		
 		row2 = new JPanel();
 		newGame = new JButton("NEW GAME");
-		newGame.addActionListener(e-> new Game());
+		newGame.addActionListener(e-> {
+			new Game();
+			dispose();
+		});
 		
 		row3 = new JPanel();
 		profile = new JButton("User Profile");
