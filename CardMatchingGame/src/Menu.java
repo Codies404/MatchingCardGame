@@ -73,6 +73,8 @@ help.addActionListener(e -> JOptionPane.showOptionDialog(null, "In this game you
 		
 		row4.setLayout(fl);
 		row4.add(help);
+		credits.addActionListener(e->JOptionPane.showMessageDialog(null,"This game was developed by Valadis Patiniwtis and Nikos Tzekas.\nTwo young developers who love the art or programming\n and would sucrifice their lives to it.  "));
+		
 		row4.add(credits);
 		
 		row5.setLayout(fl);
