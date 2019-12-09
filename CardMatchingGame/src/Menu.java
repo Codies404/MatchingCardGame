@@ -24,6 +24,7 @@ public class Menu extends JFrame{
 
 	public Menu(String title,int width,int height) {
 		super(title);
+		repaint();
 		this.width = width;
 		this.height = height;
 		setSize(width,height);
