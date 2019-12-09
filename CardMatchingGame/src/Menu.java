@@ -1,7 +1,5 @@
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -22,26 +20,19 @@ public class Menu extends JFrame{
 	private JButton exit;
 
 
-	public Menu(String title,int width,int height) {
+	public Menu(String title) {
 		
 		super(title);
-		
-		this.width = width;
-		this.height = height;
-		setSize(width,height);
-		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
 		row1 = new JPanel();
-		menu = new JLabel("");
+		menu = new JLabel("MENU");
 		
 		row2 = new JPanel();
 		newGame = new JButton("NEW GAME");
-		newGame.setBorderPainted(false);
-		newGame.setBackground(new Color(47,165,255));
-		newGame.setForeground(Color.white);
+
 		newGame.addActionListener(e-> {
 			new Game(this);
 			dispose();
@@ -49,27 +40,18 @@ public class Menu extends JFrame{
 		
 		row3 = new JPanel();
 		leaderboard = new JButton("LEADERBOARD");
-		leaderboard.setBorderPainted(false);
-		leaderboard.setBackground(new Color(47,165,255));
-		leaderboard.setForeground(Color.white);
+
 
 		
 		row4 = new JPanel();
-		help = new JButton("HELP   ");
-		help.setBorderPainted(false);
-		help.setBackground(new Color(47,165,255));
-		help.setForeground(Color.white);
+		help = new JButton("HELP");
+
 		credits = new JButton("CREDITS");
-		credits.setBorderPainted(false);
-		credits.setBackground(new Color(47,165,255));
-		credits.setForeground(Color.white);
+
 		
 		row5 = new JPanel();
 		exit = new JButton("EXIT");
 		exit.addActionListener(e -> System.exit(0));
-		exit.setBorderPainted(false);
-		exit.setBackground(new Color(128,46,46));
-		exit.setForeground(Color.white);
 		
 		Container pane = getContentPane();
 		pane.setLayout(new GridLayout(5,1));
@@ -99,30 +81,14 @@ public class Menu extends JFrame{
 		pane.add(row5);
 
 		setContentPane(pane);
-		repaint();
+		pack();
+
 	}
 	public void setVisible() {
 		setVisible(true);
 		
 	}
-	@Override
-    public void paint(Graphics g) {
-		super.paint(g);
-		g.setColor(new Color(45,44,47));
-        g.fillRoundRect(390, 0 , 300, height, 15, 15);
-        
-        g.setColor(new Color(47,165,255));
-        g.fillRoundRect(480, 148 , 120, 40, 15, 15);
-        g.fillRoundRect(470, 263 , 140, 40, 15, 15);
-        g.fillRoundRect(433, 377 , 100, 40, 15, 15);
-        g.fillRoundRect(535, 377 , 100, 40, 15, 15);
-        g.setColor(new Color(128,46,46));
-        g.fillOval(500, 470, 80, 80);
-        
-        
-         
-        
-    }
+
 
 
 }

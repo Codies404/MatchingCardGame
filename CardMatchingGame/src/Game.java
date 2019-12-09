@@ -13,39 +13,30 @@ public class Game extends JFrame {
 
 	public Game(Menu mn) {
 
-		Handler handler;
-		handler = new Handler();
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		JLabel label = new JLabel("New Game", JLabel.CENTER);
+		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		// jf.setUndecorated(true);
 		jf.add(label, BorderLayout.NORTH);
 		label.setVisible(true);
-
 		JPanel row1 = new JPanel();
 		JPanel row2 = new JPanel();
 		JPanel row3 = new JPanel();
 		JPanel row4 = new JPanel();
-
 		JButton Easy = new JButton("Easy");
 		JButton Normal = new JButton("Normal");
 		JButton Hard = new JButton("Hard");
 		JButton Back = new JButton("Back");
-
 		Back.addActionListener(e -> {
 			jf.dispose();
 			mn.setVisible();
 		});
-
 		JTextField name = new JTextField(50);
-		pack();
-		name.addActionListener(handler);
-
+		Container pane = getContentPane();
 		JLabel username = new JLabel("Enter Your name.", JLabel.NORTH_EAST);
 		JLabel difficulty = new JLabel("Please choose difficulty.");
-
-		Container pane = getContentPane();
+		// JPanel pane1
 
 		GridLayout layout = new GridLayout(20, 1);
 		FlowLayout flowlayout = new FlowLayout();
