@@ -66,6 +66,7 @@ public class Menu extends JFrame {
 
 		row3.setLayout(fl);
 		row3.add(leaderboard);
+		leaderboard.addActionListener(e->Handler.displayLeaderBoard());
 
 		row4.setLayout(fl);
 		row4.add(help);

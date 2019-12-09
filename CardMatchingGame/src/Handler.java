@@ -2,41 +2,51 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 public class Handler implements ActionListener {
 	static ArrayList<Player> players = new ArrayList<>();
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int counter = 0;
 		String user = e.getActionCommand();
-		System.out.print(user);
+
+
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i).name.equals(user)) {
-				counter++;
+				return;
 			}
 		}
- 		if (counter == 0) {
-			Player p1 = new Player(0, user);
-			addList(p1);
-		}
+
+ 		
+
+		Player p1 = new Player(0, user);
+		addList(p1);
+		
+
 	}
 
 	
 	
 	static void displayLeaderBoard() {
-		for (int i = 0; i < players.size(); i++) {
-			System.out.print(players.get(i).name + " ");
-			System.out.println(players.get(i).score);
+		StringBuilder str = new StringBuilder();
+		for(int i = 0 ; i < players.size() ; i++) {
+			str.append(players.get(i) + "\n");
 		}
+		JOptionPane.showMessageDialog(null, str.toString());
+
 	}
 
-	
-	
+		
 	
 	static void addList(Player p1) {
-
+		if(players.size() == 0 ) {
+			players.add(p1);
+			return;
+		}
 		for (int i = 0; i < players.size(); i++) {
-			if (p1.score > players.get(i).score) {
+			if (p1.score >= players.get(i).score) {
 				players.add(i, p1);
 				break;
 			}
