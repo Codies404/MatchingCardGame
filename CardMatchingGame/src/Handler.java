@@ -9,12 +9,13 @@ public class Handler implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		int counter = 0;
 		String user = e.getActionCommand();
+		System.out.print(user);
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i).name.equals(user)) {
 				counter++;
 			}
 		}
-		if (counter == 0) {
+ 		if (counter == 0) {
 			Player p1 = new Player(0, user);
 			addList(p1);
 		}
