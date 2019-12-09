@@ -12,8 +12,9 @@ import javax.swing.JTextField;
 public class Game extends JFrame {
 
 	public Game(Menu mn) {
+		Handler handler;
+		handler = new Handler();
 
-		
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel label = new JLabel("New Game", JLabel.CENTER);
@@ -34,10 +35,11 @@ public class Game extends JFrame {
 			mn.setVisible();
 		});
 		JTextField name = new JTextField(50);
-		Container pane = getContentPane();
+		name.addActionListener(handler);
+
 		JLabel username = new JLabel("Enter Your name.", JLabel.NORTH_EAST);
 		JLabel difficulty = new JLabel("Please choose difficulty.");
-		// JPanel pane1
+		Container pane = getContentPane();
 
 		GridLayout layout = new GridLayout(20, 1);
 		FlowLayout flowlayout = new FlowLayout();
@@ -57,7 +59,6 @@ public class Game extends JFrame {
 		pane.add(row2);
 		pane.add(row3);
 		pane.add(row4);
-		// pane.add(difficulty);
 
 		jf.add(pane);
 		jf.setVisible(true);
