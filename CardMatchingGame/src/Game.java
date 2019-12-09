@@ -17,7 +17,7 @@ public class Game extends JFrame {
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel label = new JLabel("New Game", JLabel.CENTER);
 		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		// jf.setUndecorated(true);
+		jf.setUndecorated(true);
 		jf.add(label, BorderLayout.NORTH);
 		label.setVisible(true);
 		JPanel row1 = new JPanel();

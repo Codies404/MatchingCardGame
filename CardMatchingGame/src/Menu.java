@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Menu extends JFrame{
@@ -69,6 +70,8 @@ public class Menu extends JFrame{
 		
 		row4.setLayout(fl);
 		row4.add(help);
+		credits.addActionListener(e->JOptionPane.showMessageDialog(null,"This game was developed by Valadis Patiniwtis and Nikos Tzekas.\nTwo young developers who love the art or programming\n and would sucrifice their lives to it.  "));
+		
 		row4.add(credits);
 		
 		row5.setLayout(fl);
