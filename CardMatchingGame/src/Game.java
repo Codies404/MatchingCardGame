@@ -13,6 +13,7 @@ public class Game extends JFrame {
 
 	public Game(Menu mn) {
 
+		
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel label = new JLabel("New Game", JLabel.CENTER);

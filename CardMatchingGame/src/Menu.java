@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Menu extends JFrame{
@@ -45,9 +46,12 @@ public class Menu extends JFrame{
 		
 		row4 = new JPanel();
 		help = new JButton("HELP");
+help.addActionListener(e -> JOptionPane.showOptionDialog(null, "In this game you select two cards each time if the are the same they remain open if you dont then they turn back down . For each difficulty level you get a number of tries.\nJoker cards:When you open a joker you can open any other card and their pair will open automatically .\nWinning coditions :if you manage to open all your cards without losing all your tries you win points .", "How to Play Shape Master.",
+				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+				null,null,null) );
 
 		credits = new JButton("CREDITS");
-
+		
 		
 		row5 = new JPanel();
 		exit = new JButton("EXIT");
