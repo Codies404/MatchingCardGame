@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 public class Game extends JFrame {
 
-	public Game() {
+	public Game(Menu mn) {
 
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,6 +28,10 @@ public class Game extends JFrame {
 		JButton Normal = new JButton("Normal");
 		JButton Hard = new JButton("Hard");
 		JButton Back = new JButton("Back");
+		Back.addActionListener(e -> {
+			jf.dispose();
+			mn.setVisible();
+		});
 		JTextField name = new JTextField(50);
 		Container pane = getContentPane();
 		JLabel username = new JLabel("Enter Your name.", JLabel.NORTH_EAST);

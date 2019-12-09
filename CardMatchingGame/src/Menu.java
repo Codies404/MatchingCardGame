@@ -35,7 +35,7 @@ public class Menu extends JFrame{
 		row2 = new JPanel();
 		newGame = new JButton("NEW GAME");
 		newGame.addActionListener(e-> {
-			new Game();
+			new Game(this);
 			dispose();
 		});
 		
@@ -52,7 +52,8 @@ public class Menu extends JFrame{
 		exit.addActionListener(e -> System.exit(0));
 		
 		Container pane = getContentPane();
-		pane.setLayout(new GridLayout(6,1));
+		pane.setLayout(new GridLayout(5,1));
+	
 		
 		FlowLayout fl = new FlowLayout();
 		row1.setLayout(fl);
@@ -77,8 +78,11 @@ public class Menu extends JFrame{
 		pane.add(row3);
 		pane.add(row4);
 		pane.add(row5);
-		
+
 		setContentPane(pane);
-		pack();
+		
+	}
+	public void setVisible() {
+		setVisible(true);
 	}
 }
