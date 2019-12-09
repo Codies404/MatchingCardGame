@@ -1,8 +1,12 @@
+import javax.swing.JFrame;
 
 public class CardMatchingGame {
 
 	public static void main(String[] args) {
-		System.out.print("Hello world from vaaldis");
+		JFrame jf = new JFrame();
+		jf.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		jf.setUndecorated(true);
+		jf.setVisible(true);
 
 	}
 
