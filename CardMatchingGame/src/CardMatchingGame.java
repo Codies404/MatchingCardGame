@@ -16,17 +16,16 @@ public class CardMatchingGame {
 		shapes.add(new Circle(200,200));
 		shapes.add(new Triangle(200,200));
 		
-		new Menu("Shape Master");
+		//new Menu("Shape Master");
 		JFrame f = new JFrame();
 		Shapes temp = shapes.get(r.nextInt(shapes.size()));
-		
-		
-		
+		Joker joker = new Joker(200,200);
+	
 		f.setSize(200,235);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setLocationRelativeTo(null);
         f.setResizable(false);
-        f.add(temp);
+        f.add(joker);
         f.setVisible(true);
 
 	}

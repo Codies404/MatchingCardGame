@@ -11,7 +11,7 @@ public class Circle extends Shapes{
 	@Override
 	public void paintComponent(Graphics g) {
 		g.setColor(color);
-		g.fillOval(0, 0, width, height);		
+		g.fillOval(10, 10, width-20, height-20);		
 	}
 
 }
