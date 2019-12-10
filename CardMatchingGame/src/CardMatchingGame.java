@@ -10,11 +10,11 @@ public class CardMatchingGame {
 
 	public static void main(String[] args) {
 		
-		new Menu("Shape Master");
+
+			new Menu("Shape Master");
 		
-		
-		
-		
+
+
 	}
 
 }
