@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -8,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Menu extends JFrame {
 
@@ -24,9 +26,11 @@ public class Menu extends JFrame {
 	public Menu(String title) {
 
 		super(title);
-		setLocationRelativeTo(null);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+
+		JFrame holder = new JFrame();
 
 		row1 = new JPanel();
 		menu = new JLabel("MENU");
@@ -58,6 +62,8 @@ public class Menu extends JFrame {
 		Container pane = getContentPane();
 		pane.setLayout(new GridLayout(5, 1));
 
+		
+		
 		FlowLayout fl = new FlowLayout();
 		row1.setLayout(fl);
 		row1.add(menu);
@@ -67,12 +73,12 @@ public class Menu extends JFrame {
 
 		row3.setLayout(fl);
 		row3.add(leaderboard);
-		leaderboard.addActionListener(e->Handler.displayLeaderBoard());
+		leaderboard.addActionListener(e -> Handler.displayLeaderBoard());
 
 		row4.setLayout(fl);
 		row4.add(help);
 		credits.addActionListener(e -> JOptionPane.showMessageDialog(null,
-				"This game was developed by Valadis Patiniwtis and Nikos Tzekas.\nTwo young developers who love the art or programming\n and would sucrifice their lives to it.  "));
+				"This game was developed by Valadis Patiniotis and Nikos Tzekas.\nTwo young developers who love the art or programming\n and would sucrifice their lives to it.  "));
 
 		row4.add(credits);
 
@@ -84,9 +90,18 @@ public class Menu extends JFrame {
 		pane.add(row3);
 		pane.add(row4);
 		pane.add(row5);
+		pack();
+		holder.setLayout(new BorderLayout());
+		pack();
+		
+		setSize(1080, (1080 * 9) / 16);
+		setLocationRelativeTo(null);
+		
+		holder.add(pane);
+
+		setResizable(false);
 
 		setContentPane(pane);
-		pack();
 
 	}
 

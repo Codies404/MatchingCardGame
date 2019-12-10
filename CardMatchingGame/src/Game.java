@@ -18,18 +18,34 @@ public class Game extends JFrame {
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel label = new JLabel("New Game", JLabel.CENTER);
-		jf.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		jf.setUndecorated(true);
+		jf.setSize(1080, (1080 * 9) / 16);
+		// jf.setUndecorated(true);
 		jf.add(label, BorderLayout.NORTH);
 		label.setVisible(true);
 		JPanel row1 = new JPanel();
 		JPanel row2 = new JPanel();
 		JPanel row3 = new JPanel();
 		JPanel row4 = new JPanel();
+		JPanel filler = new JPanel();
 		JButton Easy = new JButton("Easy");
 		JButton Normal = new JButton("Normal");
 		JButton Hard = new JButton("Hard");
 		JButton Back = new JButton("Back");
+		Easy.addActionListener(e_ -> {
+			Grid grideasy = new Grid(5, 5);
+
+		});
+
+		Normal.addActionListener(e_ -> {
+			Grid grideasy = new Grid(8, 8);
+
+		});
+
+		Hard.addActionListener(e_ -> {
+			Grid grideasy = new Grid(10, 10);
+
+		});
+
 		Back.addActionListener(e -> {
 			jf.dispose();
 			mn.setVisible();
@@ -41,7 +57,7 @@ public class Game extends JFrame {
 		JLabel difficulty = new JLabel("Please choose difficulty.");
 		Container pane = getContentPane();
 
-		GridLayout layout = new GridLayout(20, 1);
+		GridLayout layout = new GridLayout(6, 1);
 		FlowLayout flowlayout = new FlowLayout();
 		pane.setLayout(layout);
 		row1.setLayout(flowlayout);
@@ -54,13 +70,16 @@ public class Game extends JFrame {
 		row3.add(Hard);
 
 		row4.add(Back);
-
+		pane.add(filler);
 		pane.add(row1);
 		pane.add(row2);
 		pane.add(row3);
 		pane.add(row4);
 
 		jf.add(pane);
+		jf.setLocationRelativeTo(null);
+		jf.setResizable(false);
+
 		jf.setVisible(true);
 
 	}
