@@ -37,12 +37,12 @@ public class Game extends JFrame {
 		});
 
 		Normal.addActionListener(e_ -> {
-			Grid grideasy = new Grid(8, 8);
+			Grid gridnormal = new Grid(8, 8);
 
 		});
 
 		Hard.addActionListener(e_ -> {
-			Grid grideasy = new Grid(10, 10);
+			Grid gridhard = new Grid(10, 10);
 
 		});
 

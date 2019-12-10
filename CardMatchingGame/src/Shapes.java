@@ -15,7 +15,7 @@ public class Shapes extends JPanel{
 		super();
 		this.width = width;
 		this.height = height;	
-		this.color = colors[r.nextInt(3)];
+		this.color = colors[r.nextInt(4)];
 	}
 	@Override
 	protected void paintComponent(Graphics g) {

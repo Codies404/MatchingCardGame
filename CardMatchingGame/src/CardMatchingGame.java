@@ -9,26 +9,12 @@ public class CardMatchingGame {
 															
 
 	public static void main(String[] args) {
-		ArrayList<Shapes> shapes = new ArrayList<Shapes>();
-		Random r = new Random();		
-		shapes.add(new Diamond(200,200));
-		shapes.add(new Rect(200,200));
-		shapes.add(new Circle(200,200));
-		shapes.add(new Triangle(200,200));
 		
 		new Menu("Shape Master");
-		JFrame f = new JFrame();
-		Shapes temp = shapes.get(r.nextInt(shapes.size()));
 		
 		
 		
-		f.setSize(200,235);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setLocationRelativeTo(null);
-        f.setResizable(false);
-        f.add(temp);
-        f.setVisible(true);
-
+		
 	}
 
 }
