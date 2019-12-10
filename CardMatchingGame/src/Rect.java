@@ -1,10 +1,9 @@
-import java.awt.Color;
 import java.awt.Graphics;
 
 public class Rect extends Shapes {
 
-	public Rect( int width, int height) {
-		super( width, height);
+	public Rect( int width, int height,int color,int orientation) {
+		super( width, height,color,orientation);
 		orientation = r.nextInt(1);
 		shape = 2;
 	}

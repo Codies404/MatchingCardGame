@@ -1,13 +1,9 @@
-import java.awt.Color;
 import java.awt.Graphics;
-
-import javax.swing.JFrame;
 
 public class Triangle extends Shapes {
 
-	public Triangle(int width,int height) {
-		super(width,height);
-		orientation = r.nextInt(3);
+	public Triangle(int width,int height,int color,int orientation) {
+		super(width,height,color,orientation);
 		shape = 1; // not starting from 0 since we need that to create a hashcode and multiplying with 0 wont work
 	}
 

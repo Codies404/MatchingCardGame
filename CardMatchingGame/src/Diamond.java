@@ -2,9 +2,8 @@ import java.awt.Graphics;
 
 public class Diamond extends Shapes{
 
-	public Diamond(int width, int height) {
-		super( width, height);
-		orientation = r.nextInt(1);
+	public Diamond(int width, int height,int color,int orientation) {
+		super( width, height,color,orientation);
 		shape = 4;
 	}
 	@Override

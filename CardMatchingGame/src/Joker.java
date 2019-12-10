@@ -4,13 +4,11 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public class Joker extends JPanel {
-	private int width , height;
+public class Joker extends Shapes {
 	
 	public Joker(int width , int height) {
-		super();
-		this.width = width;
-		this.height = height;
+		super(width,height,0,0);
+		shape = 5;
 	}
 	@Override
 	public void paintComponent(Graphics g) {

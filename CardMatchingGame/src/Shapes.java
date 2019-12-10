@@ -8,14 +8,15 @@ public class Shapes extends JPanel{
 	protected Random r = new Random();
 	protected int shape,orientation,width,height;
 	protected Color color;
-	protected Color colors[] = {new Color(51,204,204),new Color(0,204,153),new Color(255,204,102),new Color(200,80,80)};
+	protected Color colors[] = {new Color(102,0,255),new Color(0,204,153),new Color(255,204,102),new Color(200,80,80)};
 	
 	
-	public Shapes(int width , int height) {
+	public Shapes(int width , int height,int color ,int orientation ) {
 		super();
 		this.width = width;
 		this.height = height;	
-		this.color = colors[r.nextInt(4)];
+		this.color = colors[color];
+		this.orientation = orientation;
 	}
 	@Override
 	protected void paintComponent(Graphics g) {
