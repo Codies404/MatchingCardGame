@@ -19,7 +19,7 @@ public class Grid extends JFrame {
 	Grid(int x, int y) {
 		this.x = x;
 		this.y = y;
-		
+
 		createLists();
 
 		JFrame frame = new JFrame();
@@ -36,12 +36,12 @@ public class Grid extends JFrame {
 		pane.setLayout(new GridLayout(x, y, 5, 5));
 		pane.setSize(500, 500);
 		boolean jokerExist = false;
-		
+
 		for (int i = 0; i < templist.size(); i++) {
-			if(!jokerExist) {
+			if (!jokerExist) {
 				JPanel jcard = new JPanel();
 				jcard.setLayout(new CardLayout());
-				jcard.add(new Joker(25,25));
+				jcard.add(new Joker(25, 25));
 			}
 			JPanel card = new JPanel();
 			card.setLayout(new CardLayout());
@@ -51,10 +51,10 @@ public class Grid extends JFrame {
 			pane.add(card);
 		}
 		for (int i = 0; i < templist2.size(); i++) {
-			if(!jokerExist) {
+			if (!jokerExist) {
 				JPanel jcard = new JPanel();
 				jcard.setLayout(new CardLayout());
-				jcard.add(new Joker(25,25));
+				jcard.add(new Joker(25, 25));
 			}
 			JPanel card = new JPanel();
 			card.setLayout(new CardLayout());
@@ -63,8 +63,6 @@ public class Grid extends JFrame {
 			card.add(temp);
 			pane.add(card);
 		}
-
-		
 
 		frame.setLayout(border);
 
@@ -83,53 +81,36 @@ public class Grid extends JFrame {
 	private void createLists() {
 		// creting temp list1
 		Shapes tmp;
-		for (int i = 0; i < (x * y ) -1 / 2; i++) {
+		for (int i = 0; i < (x * y-1) / 2; i++) {
 			int rand = r.nextInt(4);
 			int color = r.nextInt(4);
 			if (rand == 0) {
-			
-					tmp = new Circle(25, 25,color);
-					if (!templist.contains(tmp)) {
-						templist.add(tmp);
-						templist2.add(new Circle(25,25,color));
-					}else
-						i--;
+
+				templist.add(new Circle(25, 25, color));
+				templist2.add(new Circle(25, 25, color));
+
 			} else if (rand == 1) {
-					int orientation = r.nextInt(1);
-					tmp = new Rect(25, 25,color,orientation);
+				int orientation = r.nextInt(1);
 
-					if (!templist.contains(tmp)) {
-						templist.add(tmp);
-						templist2.add(new Rect(25,25,color,orientation));
-					}else
-						i--;
-
+				templist.add(new Rect(25, 25, color, orientation));
+				templist2.add(new Rect(25, 25, color, orientation));
 
 			} else if (rand == 2) {
-					int orientation = r.nextInt(4);
-					tmp = new Triangle(25, 25,color,orientation);
+				int orientation = r.nextInt(4);
 
-					if (!templist.contains(tmp)) {
-						templist.add(tmp);
-						templist2.add(new Triangle(25,25,color,orientation));
-					}else
-						i--;
+				templist.add(new Triangle(25, 25, color, orientation));
+				templist2.add(new Triangle(25, 25, color, orientation));
 
 			} else if (rand == 3) {
-					int orientation = r.nextInt(2);
-					tmp = new Diamond(25, 25,color,orientation);
+				int orientation = r.nextInt(2);
 
-					if (!templist.contains(tmp)) {
-						templist.add(tmp);
-						templist2.add(new Diamond(25,25,color,orientation));
-					}else
-						i--;
+				templist.add(new Diamond(25, 25, color, orientation));
+				templist2.add(new Diamond(25, 25, color, orientation));
 
 			}
 
 		}
 
-		
 	}
 
 }
