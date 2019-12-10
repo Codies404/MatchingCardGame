@@ -17,19 +17,13 @@ public class Handler implements ActionListener {
 			if (players.get(i).name.equals(user)) {
 				return;
 			}
-<<<<<<< HEAD
+
 		}
 		Player p1 = new Player(0, user);
 		addList(p1);
-=======
+
 		}
 
- 		Player p1 = new Player(0, user);
-		addList(p1);
-		
-
->>>>>>> branch 'master' of https://github.com/Codies404/MatchingCardGame.git
-	}
 	static void displayLeaderBoard() {
 		StringBuilder str = new StringBuilder();
 		for(int i = 0 ; i < players.size() ; i++) {
