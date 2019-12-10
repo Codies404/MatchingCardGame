@@ -17,17 +17,9 @@ public class Handler implements ActionListener {
 				return;
 			}
 		}
-
- 		
-
 		Player p1 = new Player(0, user);
 		addList(p1);
-		
-
 	}
-
-	
-	
 	static void displayLeaderBoard() {
 		StringBuilder str = new StringBuilder();
 		for(int i = 0 ; i < players.size() ; i++) {
@@ -36,9 +28,6 @@ public class Handler implements ActionListener {
 		JOptionPane.showMessageDialog(null, str.toString());
 
 	}
-
-		
-	
 	static void addList(Player p1) {
 		if(players.size() == 0 ) {
 			players.add(p1);
