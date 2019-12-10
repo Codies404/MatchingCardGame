@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 public class Handler implements ActionListener {
@@ -18,9 +19,7 @@ public class Handler implements ActionListener {
 			}
 		}
 
- 		
-
-		Player p1 = new Player(0, user);
+ 		Player p1 = new Player(0, user);
 		addList(p1);
 		
 
