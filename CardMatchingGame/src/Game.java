@@ -33,16 +33,19 @@ public class Game extends JFrame {
 		JButton Back = new JButton("Back");
 		Easy.addActionListener(e_ -> {
 			Grid grideasy = new Grid(5, 5);
+			jf.setVisible(false);
 
 		});
 
 		Normal.addActionListener(e_ -> {
 			Grid gridnormal = new Grid(8, 8);
+			jf.setVisible(false);
 
 		});
 
 		Hard.addActionListener(e_ -> {
 			Grid gridhard = new Grid(10, 10);
+			jf.setVisible(false);
 
 		});
 
@@ -82,6 +85,10 @@ public class Game extends JFrame {
 
 		jf.setVisible(true);
 
+	}
+	
+	public void hideOrShow(boolean show) {
+		setVisible(true);
 	}
 
 }
