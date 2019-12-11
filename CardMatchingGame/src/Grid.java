@@ -12,14 +12,17 @@ import javax.swing.JPanel;
 public class Grid extends JFrame {
 	// the size of the grid
 	private int x, y;
-	ArrayList<Shapes> shape = new ArrayList<Shapes>();
-	ArrayList<Shapes> templist = new ArrayList<Shapes>();
-	ArrayList<Shapes> templist2 = new ArrayList<Shapes>();
+	private ArrayList<Shapes> templist = new ArrayList<Shapes>();
+	private ArrayList<Shapes> templist2 = new ArrayList<Shapes>();
+	public Shapes grid[][];
 	Random r = new Random();
+	Game game;
 
-	Grid(int x, int y) {
+	Grid(int x, int y,Game game) {
+		this.game = game;
 		this.x = x;
 		this.y = y;
+		grid = new Shapes[x][y];
 
 		createLists();
 		Collections.shuffle(templist);
@@ -49,7 +52,6 @@ public class Grid extends JFrame {
 			joker1 = r.nextInt(100);
 			joker2 = r.nextInt(100);
 		}
-
 		for (int i = 0; i < templist.size(); i++) {
 			if(i == joker1) {
 				JPanel card = new JPanel();
@@ -57,6 +59,7 @@ public class Grid extends JFrame {
 				Shapes temp = new Joker(93,93);
 				card.add(temp);
 				pane.add(card);
+				addToGrid(temp);
 				
 				joker1 = -2 ;
 				i--;
@@ -68,6 +71,7 @@ public class Grid extends JFrame {
 				Shapes temp = new Joker(93,93);
 				card.add(temp);
 				pane.add(card);
+				addToGrid(temp);
 				
 				joker2 = -2 ;
 				i--;
@@ -79,6 +83,7 @@ public class Grid extends JFrame {
 			Shapes temp = templist.get(i);
 			card.add(temp);
 			pane.add(card);
+			addToGrid(temp);
 		}
 		
 		for (int i = 0; i < templist2.size(); i++) {
@@ -88,6 +93,7 @@ public class Grid extends JFrame {
 				Shapes temp = new Joker(93,93);
 				card.add(temp);
 				pane.add(card);
+				addToGrid(temp);
 				
 				joker1 = -2 ;
 				i--;
@@ -99,6 +105,7 @@ public class Grid extends JFrame {
 				Shapes temp = new Joker(93,93);
 				card.add(temp);
 				pane.add(card);
+				addToGrid(temp);
 				
 				joker2 = -2 ;
 				i--;
@@ -111,6 +118,7 @@ public class Grid extends JFrame {
 			Shapes temp = templist2.get(i);
 			card.add(temp);
 			pane.add(card);
+			addToGrid(temp);
 		}
 
 		frame.setLayout(border);
@@ -162,6 +170,17 @@ public class Grid extends JFrame {
 
 		}
 
+	}
+	private void addToGrid(Shapes s) {
+		for(int i = 0 ; i < x ; i++) {
+			for(int j = 0 ; j < y ; j++) {
+				if(grid[i][j] == null) {
+					grid[i][j] = s;
+					return;
+				}
+					
+			}
+		}
 	}
 
 }

@@ -10,10 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Game extends JFrame {
-
+	private Handler handler = new Handler();
+	private long StartTime,elapsedTime;
+	
+	
 	public Game(Menu mn) {
-		Handler handler;
-		handler = new Handler();
+		
 
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,19 +34,19 @@ public class Game extends JFrame {
 		JButton Hard = new JButton("Hard");
 		JButton Back = new JButton("Back");
 		Easy.addActionListener(e_ -> {
-			Grid grideasy = new Grid(5, 5);
+			new Grid(5, 5,this);
 			jf.setVisible(false);
 
 		});
 
 		Normal.addActionListener(e_ -> {
-			Grid gridnormal = new Grid(8, 8);
+			new Grid(8, 8,this);
 			jf.setVisible(false);
 
 		});
 
 		Hard.addActionListener(e_ -> {
-			Grid gridhard = new Grid(10, 10);
+			new Grid(10, 10,this);
 			jf.setVisible(false);
 
 		});
