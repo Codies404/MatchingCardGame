@@ -10,29 +10,26 @@ public class Handler implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String user = e.getActionCommand();
-
-
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i).name.equals(user)) {
 				return;
 			}
-
 		}
 		Player p1 = new Player(0, user);
 		addList(p1);
-
-		}
+	}
+	
 
 	static void displayLeaderBoard() {
 		StringBuilder str = new StringBuilder();
-		for(int i = 0 ; i < players.size() ; i++) {
+		for (int i = 0; i < players.size(); i++) {
 			str.append(players.get(i) + "\n");
 		}
 		JOptionPane.showMessageDialog(null, str.toString());
-
 	}
+
 	static void addList(Player p1) {
-		if(players.size() == 0 ) {
+		if (players.size() == 0) {
 			players.add(p1);
 			return;
 		}
@@ -44,5 +41,4 @@ public class Handler implements ActionListener {
 		}
 
 	}
-
 }

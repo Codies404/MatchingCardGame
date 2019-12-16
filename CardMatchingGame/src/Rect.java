@@ -8,7 +8,7 @@ public class Rect extends Shapes {
 		shape = 2;
 	}
 	@Override
-	public void paintComponent(Graphics g) {
+	public void render(Graphics g) {
 		g.setColor(color);
 		if(orientation == 0 ) {
 			g.fillRect(width/4, height/10, width - 2*width/4, height - 2*height/10);

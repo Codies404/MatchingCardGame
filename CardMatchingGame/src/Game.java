@@ -11,17 +11,24 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Game extends JFrame {
+	private Handler handler = new Handler();
+	JPanel row1, row2, row3, row4, filler;
+	JButton Easy, Normal, Hard, Back;
 
 	public Game(Menu mn) {
-		Handler handler;
-		handler = new Handler();
 
+		// making the JFrame
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JLabel label = new JLabel("New Game", JLabel.CENTER);
 		jf.setSize(1080, (1080 * 9) / 16);
+		jf.setLocationRelativeTo(null);
+		jf.setResizable(false);
+		jf.setVisible(true);
 		// jf.setUndecorated(true);
+
+		JLabel label = new JLabel("New Game", JLabel.CENTER);
 		jf.add(label, BorderLayout.NORTH);
+<<<<<<< HEAD
 		label.setVisible(true);
 		JPanel row1 = new JPanel();
 		JPanel row2 = new JPanel();
@@ -63,16 +70,37 @@ public class Game extends JFrame {
 			panel.setVisible(true);
 			
 			
+=======
+
+		row1 = new JPanel();
+		row2 = new JPanel();
+		row3 = new JPanel();
+		row4 = new JPanel();
+		filler = new JPanel();
+		Easy = new JButton("Easy");
+		Normal = new JButton("Normal");
+		Hard = new JButton("Hard");
+		Back = new JButton("Back");
+		Easy.addActionListener(e -> {
+			new Grid(5, 5, this);
+			jf.setVisible(false);
+>>>>>>> branch 'master' of https://github.com/Codies404/MatchingCardGame.git
 
 		});
 
 		Normal.addActionListener(e -> {
+<<<<<<< HEAD
 			Grid gridnormal = new Grid(8, 8);
+=======
+			new Grid(8, 8, this);
+			jf.setVisible(false);
+>>>>>>> branch 'master' of https://github.com/Codies404/MatchingCardGame.git
 
 		});
 
-		Hard.addActionListener(e_ -> {
-			Grid gridhard = new Grid(10, 10);
+		Hard.addActionListener(e -> {
+			new Grid(10, 10, this);
+			jf.setVisible(false);
 
 		});
 
@@ -85,6 +113,7 @@ public class Game extends JFrame {
 
 		JLabel username = new JLabel("Enter Your name.", JLabel.NORTH_EAST);
 		JLabel difficulty = new JLabel("Please choose difficulty.");
+		
 		Container pane = getContentPane();
 
 		GridLayout layout = new GridLayout(6, 1);
@@ -107,11 +136,11 @@ public class Game extends JFrame {
 		pane.add(row4);
 
 		jf.add(pane);
-		jf.setLocationRelativeTo(null);
-		jf.setResizable(false);
 
-		jf.setVisible(true);
+	}
 
+	public void setVisible(boolean show) {
+		setVisible(true);
 	}
 
 }

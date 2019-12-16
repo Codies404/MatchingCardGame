@@ -7,8 +7,9 @@ import javax.swing.JPanel;
 public class Shapes extends JPanel{
 	protected Random r = new Random();
 	protected int shape,orientation,width,height;
-	protected Color color;
-	protected Color colors[] = {new Color(102,0,255),new Color(0,204,153),new Color(255,204,102),new Color(200,80,80)};
+	protected int i = 0;
+	protected Color color;		// red				//blue				//green 		//yellow
+	protected Color colors[] = {new Color(255,0,0),new Color(0,0,255),new Color(0,255,0),new Color(255,225,0)};
 	
 	
 	public Shapes(int width , int height,int color ,int orientation ) {
@@ -18,9 +19,10 @@ public class Shapes extends JPanel{
 		this.color = colors[color];
 		this.orientation = orientation;
 	}
-	@Override
-	protected void paintComponent(Graphics g) {
-		g.drawString("no shape here",width/2,100);
+	protected void render(Graphics g) {
+		g.setColor(Color.black);
+		g.fillOval(0, 0, 200, 200);
+		g.drawString("no shape here",0,0);
 	}
 	
 	public int getOrientation() {return orientation;}
@@ -51,7 +53,26 @@ public class Shapes extends JPanel{
 		return true;
 		
 	}
+	//if everything is max then the color is white
+	//thus by increasing the smaller values in the rgb it makes the color brighter
+	//for best result the amount should be between aprox 20 and 80 (not too bright not too dark)
+	protected Color brightness(float amount) {
+		
+	    float RGB[] = new float[3];
+	    this.color.getColorComponents(RGB);
 
+	    float result[] = new float[3];
+	 
+	    for(int i = 0 ; i < 3 ; i++) {
+	    	//System.out.println();
+	    	if(RGB[i] < (float)0.1)
+				result[i] = RGB[i] *amount ;
+	    	else
+	    		result[i] = RGB[i];
+	    }
+
+	    return new Color (result[0], result[1], result[2]);
+	}
 
 
 }
