@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -31,12 +32,41 @@ public class Game extends JFrame {
 		JButton Normal = new JButton("Normal");
 		JButton Hard = new JButton("Hard");
 		JButton Back = new JButton("Back");
-		Easy.addActionListener(e_ -> {
+		Easy.addActionListener(e -> {
 			Grid grideasy = new Grid(5, 5);
+			JFrame panel=new JFrame();
+			panel.setLayout(new BorderLayout());
+			panel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			panel.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			
+			
+			
+			Container buttons =new Container();
+			buttons.setLayout(new GridLayout());
+						
+			for(int i=0;i<25;i++)
+			{
+				JPanel holder =new JPanel();
+				JButton b1 =new JButton();
+				b1.addActionListener(a ->{
+					holder.setVisible(false);
+				});
+				holder .add(b1);
+				buttons.add(holder);
+			}
+			panel.add(grideasy,BorderLayout.CENTER);
+			panel.add(buttons,BorderLayout.CENTER);
+			panel.setUndecorated(true);
+			panel.setLocationRelativeTo(null);
+			
+			panel.setResizable(false);
+			panel.setVisible(true);
+			
+			
 
 		});
 
-		Normal.addActionListener(e_ -> {
+		Normal.addActionListener(e -> {
 			Grid gridnormal = new Grid(8, 8);
 
 		});
