@@ -28,7 +28,7 @@ public class Game extends JFrame {
 
 		JLabel label = new JLabel("New Game", JLabel.CENTER);
 		jf.add(label, BorderLayout.NORTH);
-<<<<<<< HEAD
+
 		label.setVisible(true);
 		JPanel row1 = new JPanel();
 		JPanel row2 = new JPanel();
