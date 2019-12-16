@@ -8,7 +8,7 @@ public class Triangle extends Shapes {
 	}
 
 	@Override
-	public void paintComponent(Graphics g) {
+	public void render(Graphics g) {
 		g.setColor(color);
 		if(orientation == 0 ) {
 			g.fillPolygon(new int[] {0,0,height} , new int[] {0,width,0} , 3);

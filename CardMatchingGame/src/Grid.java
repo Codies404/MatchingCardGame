@@ -1,186 +1,153 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Grid extends JFrame {
-	// the size of the grid
-	private int x, y;
-	private ArrayList<Shapes> templist = new ArrayList<Shapes>();
-	private ArrayList<Shapes> templist2 = new ArrayList<Shapes>();
-	public Shapes grid[][];
+	private int width, height;
+	private Game game;
+	private JFrame frame;
+	private Container pane;
+	private JPanel grid, card[][], gap1, gap2;
+	private JButton button[][];
+	private ArrayList<Card> tempList = new ArrayList<Card>();
+	private CardLayout cl = new CardLayout();
 	Random r = new Random();
-	Game game;
+	private int shapeSize = 93;
 
-	Grid(int x, int y,Game game) {
+	public Grid(int width, int height, Game game) {
+		this.width = width;
+		this.height = height;
 		this.game = game;
-		this.x = x;
-		this.y = y;
-		grid = new Shapes[x][y];
+		card = new JPanel[width][height];
+		button = new JButton[width][height];
+		grid = new JPanel(new GridLayout(width, height, 5, 5));
 
-		createLists();
-		Collections.shuffle(templist);
-		Collections.shuffle(templist2);
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pane = getContentPane();
+		pane.setLayout(new BorderLayout());
 
-		BorderLayout border = new BorderLayout(300, 10);
+		setFrame();
+		addShapes();
+		gap1 = new JPanel();
+		gap2 = new JPanel();
+		gap1.setPreferredSize(new Dimension(400, 1000));
+		gap2.setPreferredSize(new Dimension(400, 1000));
+		pane.add(gap1, BorderLayout.WEST);
+		pane.add(gap2, BorderLayout.EAST);
+		pane.add(grid, BorderLayout.CENTER);
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				// creating the grid
+				card[i][j] = new JPanel();
 
-		Container pane = getContentPane();
-		JPanel filler = new JPanel();
-		JPanel filler2 = new JPanel();
-		JPanel filler3 = new JPanel();
-		JPanel filler4 = new JPanel();
-
-		pane.setLayout(new GridLayout(x, y, 5, 5));
-		
-		int joker1;
-		int joker2;
-		if(x<6) {
-			joker1 = r.nextInt(25);
-			joker2 = 100;
-		}else if(x<10) {
-			joker1 = r.nextInt(64);
-			joker2 = r.nextInt(64);
-		}else {
-			joker1 = r.nextInt(100);
-			joker2 = r.nextInt(100);
+			}
 		}
-		for (int i = 0; i < templist.size(); i++) {
-			if(i == joker1) {
-				JPanel card = new JPanel();
-				card.setLayout(new CardLayout());
-				Shapes temp = new Joker(93,93);
-				card.add(temp);
-				pane.add(card);
-				addToGrid(temp);
-				
-				joker1 = -2 ;
-				i--;
-				continue;
+		int joker1, joker2;
+		if (width < 6) {
+			joker1 = r.nextInt(width * height);
+			joker2 = -1;
+		} else {
+			joker1 = r.nextInt(width * height);
+			joker2 = r.nextInt(width * height);
+			while (joker1 == joker2) {
+				joker2 = r.nextInt();
 			}
-			if(x>6 &&i == joker2) {
-				JPanel card = new JPanel();
-				card.setLayout(new CardLayout());
-				Shapes temp = new Joker(93,93);
-				card.add(temp);
-				pane.add(card);
-				addToGrid(temp);
-				
-				joker2 = -2 ;
-				i--;
-				continue;
-			}
-			JPanel card = new JPanel();
-			card.setLayout(new CardLayout());
-
-			Shapes temp = templist.get(i);
-			card.add(temp);
-			pane.add(card);
-			addToGrid(temp);
 		}
-		
-		for (int i = 0; i < templist2.size(); i++) {
-			if(i == joker1%x) {
-				JPanel card = new JPanel();
-				card.setLayout(new CardLayout());
-				Shapes temp = new Joker(93,93);
-				card.add(temp);
-				pane.add(card);
-				addToGrid(temp);
-				
-				joker1 = -2 ;
-				i--;
-				continue;
-			}
-			if(x>6 && i == joker2%x) {
-				JPanel card = new JPanel();
-				card.setLayout(new CardLayout());
-				Shapes temp = new Joker(93,93);
-				card.add(temp);
-				pane.add(card);
-				addToGrid(temp);
-				
-				joker2 = -2 ;
-				i--;
-				continue;
-			}
+		int counter = 0;
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				//we take from the list a random object (which exists twice in the list
+				//the jokers are assigned to a specific cell before thus if we find that cell we just add a joker 
+				if (counter == joker1 || counter == joker2) {
+					Card cd = new Card(5, shapeSize, shapeSize, r.nextInt(5) + 1, 0);
+					card[i][j].addMouseListener(cd);
+					card[i][j].add(cd);
+					grid.add(card[i][j]);
+					j++;
 
-			JPanel card = new JPanel();
-			card.setLayout(new CardLayout());
-
-			Shapes temp = templist2.get(i);
-			card.add(temp);
-			pane.add(card);
-			addToGrid(temp);
-		}
-
-		frame.setLayout(border);
-
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		//frame.setUndecorated(true);
-		frame.setLocationRelativeTo(null);
-		frame.add(filler4, BorderLayout.SOUTH);
-		frame.add(filler3, BorderLayout.NORTH);
-		frame.add(filler2, BorderLayout.WEST);
-		frame.add(filler, BorderLayout.EAST);
-		frame.add(pane, BorderLayout.CENTER);
-		frame.setResizable(false);
-		frame.setVisible(true);
-
-	}
-
-	private void createLists() {
-		// creting temp list1
-		int cardSize = 93;
-		Shapes tmp;
-		for (int i = 0; i < (x * y-1) / 2; i++) {
-			int rand = r.nextInt(4);
-			int color = r.nextInt(4);
-			if (rand == 0) {
-
-				templist.add(new Circle(cardSize, cardSize, color));
-				templist2.add(new Circle(cardSize, cardSize, color));
-
-			} else if (rand == 1) {
-				int orientation = r.nextInt(2);
-
-				templist.add(new Rect(cardSize, cardSize, color, orientation));
-				templist2.add(new Rect(cardSize, cardSize, color, orientation));
-
-			} else if (rand == 2) {
-				int orientation = r.nextInt(4);
-
-				templist.add(new Triangle(cardSize, cardSize, color, orientation));
-				templist2.add(new Triangle(cardSize, cardSize, color, orientation));
-
-			} else if (rand == 3) {
-				int orientation = r.nextInt(2);
-
-				templist.add(new Diamond(cardSize, cardSize, color, orientation));
-				templist2.add(new Diamond(cardSize, cardSize, color, orientation));
-
-			}
-
-		}
-
-	}
-	private void addToGrid(Shapes s) {
-		for(int i = 0 ; i < x ; i++) {
-			for(int j = 0 ; j < y ; j++) {
-				if(grid[i][j] == null) {
-					grid[i][j] = s;
-					return;
 				}
-					
+				int index;
+				if(tempList.size() > 0)
+					index = r.nextInt(tempList.size()); 
+				else
+					index = 0;
+				Card cd = tempList.get(index);
+				
+				card[i][j].addMouseListener(cd);
+				card[i][j].add(cd);
+				grid.add(card[i][j]);
+				
+
+				counter++;
+				tempList.remove(index);
+
+			}
+
+		}
+
+	}
+
+	private void setFrame() {
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// setUndecorated(true);
+		setVisible(true);
+	}
+
+	private void addShapes() {
+
+		int color;
+		int orientation;
+		for (int i = 0; i < (width * height) / 2; i++) {
+			int rand = r.nextInt(4);
+			color = r.nextInt(4);
+			if (rand == 0) {
+				orientation = r.nextInt(4);
+				// adding new triangle
+				Card object = new Card(1, shapeSize, shapeSize, color, orientation);
+				Card clone = new Card(1, shapeSize, shapeSize, color, orientation);
+
+				tempList.add(object);
+				tempList.add(clone);
+			} else if (rand == 1) {
+				orientation = r.nextInt(2);
+				// adding new rectangle
+				Card object = new Card(2, shapeSize, shapeSize, color, orientation);
+				Card clone = new Card(2, shapeSize, shapeSize, color, orientation);
+
+				tempList.add(object);
+				tempList.add(clone);
+			} else if (rand == 2) {
+				orientation = r.nextInt(2);
+				// adding new diamond
+				Card object = new Card(3, shapeSize, shapeSize, color, orientation);
+				Card clone = new Card(3, shapeSize, shapeSize, color, orientation);
+
+				tempList.add(object);
+				tempList.add(clone);
+			} else if (rand == 3) {
+				orientation = 0;
+				// adding new circleS
+				Card object = new Card(4, shapeSize, shapeSize, color, orientation);
+				Card clone = new Card(4, shapeSize, shapeSize, color, orientation);
+
+				tempList.add(object);
+				tempList.add(clone);
 			}
 		}
+		Collections.shuffle(tempList);
+
 	}
 
 }
