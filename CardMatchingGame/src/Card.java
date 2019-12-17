@@ -44,12 +44,18 @@ public class Card extends JPanel implements MouseListener {
 			g.fillRect(0, 0, 93, 93);
 			faceUp.render(g);
 		}
+		
+		if(chooseFace == 0) {
+			repaint();
+			chooseFace=2;
+		}
 
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		chooseFace++;
+		System.out.println(chooseFace);
 		repaint();
 		
 	}

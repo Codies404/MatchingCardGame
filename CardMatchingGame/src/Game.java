@@ -137,7 +137,6 @@ public class Game extends JFrame {
 
 		jf.add(pane);
 		
-		//just push new head
 
 	}
 
