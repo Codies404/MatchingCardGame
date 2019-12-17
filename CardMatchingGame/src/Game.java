@@ -16,7 +16,7 @@ public class Game extends JFrame {
 	JButton Easy, Normal, Hard, Back;
 
 	public Game(Menu mn) {
-
+/////
 		// making the JFrame
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
