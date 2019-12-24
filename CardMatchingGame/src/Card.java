@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class Card extends JPanel implements MouseListener {
 	private Shapes faceUp;
 	private CardBack faceDown;
-	private int chooseFace ;
+	private int chooseFace  ;
 	
 	public Card(int shape , int width , int height , int color,int orientation) {
 		super();
@@ -45,7 +45,7 @@ public class Card extends JPanel implements MouseListener {
 			faceUp.render(g);
 		}
 		
-		if(chooseFace == 0) {
+		if(chooseFace <4) {
 			repaint();
 			chooseFace=2;
 		}

@@ -99,6 +99,8 @@ public class Grid extends JFrame {
 
 	private void setFrame() {
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
+		
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// setUndecorated(true);
