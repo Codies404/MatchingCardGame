@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -15,7 +16,7 @@ public class Game extends JFrame {
 	JButton Easy, Normal, Hard, Back;
 
 	public Game(Menu mn) {
-
+/////
 		// making the JFrame
 		JFrame jf = new JFrame("Shape Master!");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,6 +28,49 @@ public class Game extends JFrame {
 
 		JLabel label = new JLabel("New Game", JLabel.CENTER);
 		jf.add(label, BorderLayout.NORTH);
+
+		label.setVisible(true);
+		JPanel row1 = new JPanel();
+		JPanel row2 = new JPanel();
+		JPanel row3 = new JPanel();
+		JPanel row4 = new JPanel();
+		JPanel filler = new JPanel();
+		JButton Easy = new JButton("Easy");
+		JButton Normal = new JButton("Normal");
+		JButton Hard = new JButton("Hard");
+		JButton Back = new JButton("Back");
+		Easy.addActionListener(e -> {
+			Grid grideasy = new Grid(5, 5);
+			JFrame panel=new JFrame();
+			panel.setLayout(new BorderLayout());
+			panel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			panel.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			
+			
+			
+			Container buttons =new Container();
+			buttons.setLayout(new GridLayout());
+						
+			for(int i=0;i<25;i++)
+			{
+				JPanel holder =new JPanel();
+				JButton b1 =new JButton();
+				b1.addActionListener(a ->{
+					holder.setVisible(false);
+				});
+				holder .add(b1);
+				buttons.add(holder);
+			}
+			panel.add(grideasy,BorderLayout.CENTER);
+			panel.add(buttons,BorderLayout.CENTER);
+			panel.setUndecorated(true);
+			panel.setLocationRelativeTo(null);
+			
+			panel.setResizable(false);
+			panel.setVisible(true);
+			
+			
+=======
 
 		row1 = new JPanel();
 		row2 = new JPanel();
@@ -40,12 +84,17 @@ public class Game extends JFrame {
 		Easy.addActionListener(e -> {
 			new Grid(5, 5, this);
 			jf.setVisible(false);
+>>>>>>> branch 'master' of https://github.com/Codies404/MatchingCardGame.git
 
 		});
 
 		Normal.addActionListener(e -> {
+<<<<<<< HEAD
+			Grid gridnormal = new Grid(8, 8);
+=======
 			new Grid(8, 8, this);
 			jf.setVisible(false);
+>>>>>>> branch 'master' of https://github.com/Codies404/MatchingCardGame.git
 
 		});
 
